@@ -3,3 +3,13 @@ body {
     margin:0;
     font-family: "Inika", serif;;
 }
+
+#conteudoBody {
+
+    max-width: 1200px; 
+    width: 90vw; 
+    margin: 5vw auto 0; 
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+}

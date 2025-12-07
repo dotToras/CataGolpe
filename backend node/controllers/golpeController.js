@@ -19,10 +19,20 @@ export const buscarGolpes = async (req, res) => {
 
     try {
 
-        const { tipo, statusVeracidade, votosConfirmacao, votosNegacao} = req.query;
+        const { termo, tipo, statusVeracidade, votosConfirmacao, votosNegacao} = req.query;
 
         const filtro = {};
         const ordenacao = {};
+
+        if (termo) {
+            // Cria uma expressão regular (Regex) case-insensitive para buscar o termo
+            const termoBusca = new RegExp(termo, 'i');
+
+           
+            filtro.$or = [
+                { nome: termoBusca },
+            ];
+        }
 
         if(tipo) {
             filtro.tipo = tipo;
