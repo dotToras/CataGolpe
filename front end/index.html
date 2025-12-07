@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/header.css" />
     <link rel="stylesheet" href="./css/busca.css" />
+    <link rel="stylesheet" href="./css/modal.css" />
 </head>
 
 <body>
@@ -54,6 +55,46 @@
             <p>Registrar Golpe</p> 
         </button>
 
+        <!--modal/popup-->
+    <div class="modal" id="modalCadastro">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h3>Registro de Novo Golpe</h3>
+            
+            <form id="formCadastroGolpe" method="post" onsubmit="cadastrarGolpe(event)"> 
+                
+                <label for="nome">Título/Nome do Golpe:</label>
+                <input type="text" id="tituloGolpe" name="nome" placeholder="Ex: Golpe do Falso Pix" required>
+
+                <label for="descricao">Descrição Detalhada:</label>
+                <textarea id="descricao" name="descricao" rows="5" placeholder="Descreva como o golpe funciona, o que promete e qual o dano causado..." required></textarea>
+                
+                <label for="tipoGolpe">Tipo de Golpe:</label>
+
+                <select id="tipo" name="tipo" required> 
+                    <option value="" disabled selected>Selecione um tipo</option>
+                    
+                    <option value="phishing">Phishing (E-mail/SMS)</option>
+                    <option value="falso boleto">Falso Boleto</option>
+                    <option value="WhatsApp">Clonagem de WhatsApp/Mensagem</option>
+                    <option value="Instagram">Golpe no Instagram</option>
+                    <option value="e-mail">Golpe por E-mail</option>
+                    <option value="outros">Outros</option>
+                </select>
+
+                <label for="dataOcorrencia">Data Estimada da Ocorrência:</label>
+                <input type="date" id="dataOcorrencia" name="dataOcorrencia">
+
+                <label for="linkReferencia">Link de Referência (Opcional):</label>
+                <input type="url" id="linkReferencia" name="linkReferencia" placeholder="URL com mais informações ou denúncia">
+                
+                <button type="submit" class="btnEnviar">
+                    <p>Registrar Golpe</p>
+                </button>
+            </form>
+        </div>
+    </div>
+
         <!--Pesquisa-->
         <form id="formsPesquisa" role="search" onsubmit="buscarGolpe(event)" method="get">
             <input class="inputBusca" type="search" placeholder="Pesquisar golpes..." />        
@@ -70,7 +111,7 @@
 
     <!--Scrips para chamada de metodos/endpoints-->
     <script src="./js/busca.js"></script>
-
+    <script src="./js/modal.js"></script>
 </body>
 </html>
 

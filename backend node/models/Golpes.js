@@ -13,7 +13,8 @@ const golpeSchema = new mongoose.Schema({
     statusVeracidade: { type: String, enum: ['confirmado', 'suspeito', 'negado'], default: 'suspeito' },
     votosConfirmacao: { type: Number, default: 0, min: 0 },
     votosNegacao: { type: Number, default: 0, min: 0 },
-    dataCadastro: { type: Date, default: Date.now, immutable: true }
+    dataCadastro: { type: Date, default: Date.now, immutable: true },
+    linkReferencia: { type: String, trim: true, default: null }
 }, { collection: 'Golpes', timestamps: true});
 
 const Golpes = mongoose.model("Golpe", golpeSchema, 'Golpes');
