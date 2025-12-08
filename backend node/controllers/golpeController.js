@@ -88,8 +88,39 @@ export const votarGolpes = async (req, res) => {
             { new : true}
         )
 
+        const golpeFinal = await recalcularStatus(golpeVotar);
+        
         return res.status(200).json(golpeVotar);
     } catch(err) {
         return res.status(400).json({ erro: err.message });
     }
 }
+
+const recalcularStatus = async (golpe) => {
+    
+    const diferencaVotos = golpe.votosConfirmacao - golpe.votosNegacao;
+    let novoStatus = golpe.statusVeracidade; // Mantém o status atual por padrão
+
+    const limiteConfirmacao = 5;
+    const limiteNegacao = -5;
+
+    if (diferencaVotos >= limiteConfirmacao) {
+        novoStatus = 'confirmado';
+    } else if (diferencaVotos <= limiteNegacao) {
+        novoStatus = 'negado';
+    } else {
+        novoStatus = 'suspeito'; // Mantém suspeito se estiver dentro do limite
+    }
+
+    // Se o status mudou, atualize o documento no banco de dados
+    if (novoStatus !== golpe.statusVeracidade) {
+        return Golpe.findByIdAndUpdate(
+            golpe._id,
+            { statusVeracidade: novoStatus },
+            { new: true }
+        );
+    }
+    
+    // Se não houve mudança, retorna o documento original
+    return golpe;
+};

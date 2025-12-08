@@ -69,7 +69,7 @@ function preencherCards(dados) {
          <div class="card">
          <div class="cardHeader">
                         <span class="golpeTipo">${golpe.tipo.toUpperCase()}</span>
-                        <span class="golpeStatus confirmado"><i class="fas fa-check-circle"></i> ${golpe.statusVeracidade}</span>
+                        <span class="golpeStatus ${golpe.statusVeracidade}"><i class="fas fa-check-circle"></i> ${golpe.statusVeracidade}</span>
                      </div>
 
                      <h3 class="golpeNome">${golpe.nome}</h3>
