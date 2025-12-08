@@ -28,6 +28,7 @@
 
         <div class="perfil">
 
+
             <div class="perfilInfo">
                 <img src="https://ovicio.com.br/wp-content/uploads/2024/07/20240710-sanda-anime-teaser-2.webp" alt="" class="fotoPerfil">
                 <p class="nomeUsuario">Mario Santos</p>
@@ -40,13 +41,18 @@
                     <img width="24" height="24" src="https://img.icons8.com/material-rounded/24/9d9d9c/edit--v1.png" alt="edit--v1"/>
                 </a>
                 
-                <a href="" class="fazerLogout">
+                <a href="" onclick='deslogar()' class="fazerLogout">
                     <p class="perfilTxt">Encerrar sessão</p>
                     <img width="24" height="24" src="https://img.icons8.com/android/24/9d9d9c/logout-rounded.png" alt="edit--v1"/>
                 </a>
             </div>    
 
         </div>
+
+        <div class="perfilDeslogado">
+            <a href="#" class="btn-acesso btn-login" onclick="mostrarModal('modalLogin')">Login</a>
+            <a href="#" class="btn-acesso btn-registrar " onclick="mostrarModal('modalCadastroUsuario')">Cadastrar</a>
+        </div>        
     </header>
 
     <!--Conteudo do Body-->
@@ -57,47 +63,96 @@
             <p>Registrar Golpe</p> 
         </button>
 
-        <!--modal/popup-->
-    <div class="modal" id="modalCadastro">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <h3>Registro de Novo Golpe</h3>
-            
-            <form id="formCadastroGolpe" method="post" onsubmit="cadastrarGolpe(event)"> 
+            <!--modal/popup-->
+        <div class="modal" id="modalCadastro">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <h3>Registro de Novo Golpe</h3>
                 
-                <label for="nome">Título/Nome do Golpe:</label>
-                <input type="text" id="tituloGolpe" name="nome" placeholder="Ex: Golpe do Falso Pix" required>
-
-                <label for="descricao">Descrição Detalhada:</label>
-                <textarea id="descricao" name="descricao" rows="5" placeholder="Descreva como o golpe funciona, o que promete e qual o dano causado..." required></textarea>
-                
-                <label for="tipoGolpe">Tipo de Golpe:</label>
-
-                <select id="tipo" name="tipo" required> 
-                    <option value="" disabled selected>Selecione um tipo</option>
+                <form id="formCadastroGolpe" class="form-modal" method="post" onsubmit="cadastrarGolpe(event)"> 
                     
-                    <option value="phishing">Phishing (E-mail/SMS)</option>
-                    <option value="falso boleto">Falso Boleto</option>
-                    <option value="WhatsApp">Clonagem de WhatsApp/Mensagem</option>
-                    <option value="Instagram">Golpe no Instagram</option>
-                    <option value="e-mail">Golpe por E-mail</option>
-                    <option value="outros">Outros</option>
-                </select>
+                    <label for="nome">Título/Nome do Golpe:</label>
+                    <input type="text" id="tituloGolpe" name="nome" placeholder="Ex: Golpe do Falso Pix" required>
 
-                <label for="dataOcorrencia">Data Estimada da Ocorrência:</label>
-                <input type="date" id="dataOcorrencia" name="dataOcorrencia">
+                    <label for="descricao">Descrição Detalhada:</label>
+                    <textarea id="descricao" name="descricao" rows="5" placeholder="Descreva como o golpe funciona, o que promete e qual o dano causado..." required></textarea>
+                    
+                    <label for="tipoGolpe">Tipo de Golpe:</label>
 
-                <label for="linkReferencia">Link de Referência (Opcional):</label>
-                <input type="url" id="linkReferencia" name="linkReferencia" placeholder="URL com mais informações ou denúncia">
-                
-                <button type="submit" class="btnEnviar">
-                    <p>Registrar Golpe</p>
-                </button>
-            </form>
+                    <select id="tipo" name="tipo" required> 
+                        <option value="" disabled selected>Selecione um tipo</option>
+                        
+                        <option value="phishing">Phishing (E-mail/SMS)</option>
+                        <option value="falso boleto">Falso Boleto</option>
+                        <option value="WhatsApp">Clonagem de WhatsApp/Mensagem</option>
+                        <option value="Instagram">Golpe no Instagram</option>
+                        <option value="e-mail">Golpe por E-mail</option>
+                        <option value="outros">Outros</option>
+                    </select>
+
+                    <label for="dataOcorrencia">Data Estimada da Ocorrência:</label>
+                    <input type="date" id="dataOcorrencia" name="dataOcorrencia">
+
+                    <label for="linkReferencia">Link de Referência (Opcional):</label>
+                    <input type="url" id="linkReferencia" name="linkReferencia" placeholder="URL com mais informações ou denúncia">
+                    
+                    <button type="submit" class="btnEnviar">
+                        <p>Registrar Golpe</p>
+                    </button>
+                </form>
+            </div>
         </div>
-    </div>
 
-        <!--Pesquisa-->
+        <!--Modal de Login-->
+        <div class="modal" id="modalLogin">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <h3>Acessar conta</h3>
+                
+                <form id="formLogin" class="form-modal" method="post" onsubmit="fazerLogin(event)"> 
+                    
+                    <label for="email">Email do usuário:</label>
+                    <input type="text" id="emailUsuario" name="email" placeholder="Ex: exemplo@exemplo.com" required>
+
+                    <label for="senha">Email do usuário:</label>
+                    <input type="password" id="senhaUsuario" name="senha" placeholder="Digite sua senha..." required>
+
+                    <button type="submit" class="btnEnviar">
+                        <p>Entrar</p>
+                    </button>
+
+                </form>
+            </div>
+        </div>
+
+        <!--Modal de Cadastro-->
+        <div class="modal" id="modalCadastroUsuario">
+            <div class="modal-content">
+                <span class="close-button">&times;</span> <h3>Crie Sua Conta</h3>
+                
+                <form id="formCadastroUsuario" class="form-modal" onsubmit="registrarNovoUsuario(event)"> 
+                    
+                    <label for="nome">Seu Nome:</label>
+                    <input type="text" id="reg_nome" name="nome" placeholder="Ex: Maria da Silva" required>
+
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="reg_email" name="email" placeholder="seu.email@exemplo.com" required>
+
+                    <label for="reg_senha">Senha:</label>
+                    <input type="password" id="reg_senha" name="senha" placeholder="Mínimo 6 caracteres" required minlength="6">
+                    
+                    <label for="reg_confirmar_senha">Confirmar Senha:</label>
+                    <input type="password" id="reg_confirmar_senha"  placeholder="Repita a senha" required minlength="6">
+                    
+                    <button type="submit" class="btnEnviar">
+                        <p>Cadastrar</p>
+                    </button>
+                
+                </form>
+            </div>
+        </div>
+
+            <!--Pesquisa-->
         <form id="formsPesquisa" role="search" onsubmit="buscarGolpe(event)" method="get">
             <input class="inputBusca" type="search" placeholder="Pesquisar golpes..." />        
             <button class="btnBusca" type="submit">
@@ -106,10 +161,9 @@
         </form>
 
 
-
         <!--Card-->
         <section id="cardSection">
- 
+    
         </section>
 
     </section>
@@ -117,6 +171,7 @@
     <!--Scrips para chamada de metodos/endpoints-->
     <script src="./js/busca.js"></script>
     <script src="./js/modal.js"></script>
+    <script src="./js/login.js"></script>
 </body>
 </html>
 

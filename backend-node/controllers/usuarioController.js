@@ -32,3 +32,16 @@ export const fazerLogin = async (req, res) => {
    
 
 }
+
+export const criarUsuario = async (req, res) => {
+
+    try {
+        
+        const usuario = await Usuario.create(req.body);
+        res.status(201).json(usuario);
+
+    } catch (err) {
+        res.staus(400).json({erro: err.message });
+    }
+
+}

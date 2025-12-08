@@ -3,12 +3,18 @@
 // Metodo PUT para atualizar contagem de votos
 async function atualizarVotos(idGolpe, tipoVoto) {
    
-   const URL = `http://localhost:3000/api/golpes/${idGolpe}/`; 
-    
+    const URL = `http://localhost:3000/api/golpes/${idGolpe}/`; 
+    const usuarioToken = localStorage.getItem('usuarioToken');
+
+    if(!usuarioToken) {
+        alert("É necessário estar logado para votar");
+    }
+
     const inputGolpe = {
         method: 'PUT', 
         headers: {
             'Content-Type': 'application/json',
+            'Authorization': `Bearer ${usuarioToken}`,
         },
         body: JSON.stringify({ voto: tipoVoto }), // Envia o tipo de voto no corpo da requisição
     };

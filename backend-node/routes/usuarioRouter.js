@@ -1,10 +1,11 @@
 import express from 'express'
-import{ fazerLogin } from '../controllers/usuarioController.js'
+import{ fazerLogin, criarUsuario } from '../controllers/usuarioController.js'
 
 
 const router = express.Router();
 
 // Rotas
-router.post('/', fazerLogin);
+router.post('/login', fazerLogin);
+router.post('/', criarUsuario);
 
 export default router;

@@ -77,3 +77,28 @@ header .imgLogo {
     background-color: #d9d9d96c;
     color: #FE820F ;
 }
+
+.perfilDeslogado {
+    display: none;
+    align-items: center;
+    justify-content: space-evenly;
+    cursor:pointer;
+    width:17vw;
+
+    
+}
+
+.perfilDeslogado a {
+    text-decoration: none;
+    color: #333333;
+    display: flex; 
+    align-items: center; 
+    justify-content: space-around;
+   
+}
+
+.perfilDeslogado a:hover {
+
+    color: #070606;
+
+}
