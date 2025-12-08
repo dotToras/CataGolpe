@@ -1,0 +1,133 @@
+
+#cardSection {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 25px;
+    padding: 20px;
+    width: 90%;
+    margin: 0 auto;
+}
+
+
+.card {
+    background: #f8fbff;
+    width: 25vw;
+    max-width: 330px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    padding-bottom: 15px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+
+.cardHeader {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    background: #eef6ff;
+    border-radius: 12px 12px 0 0;
+}
+
+.golpeTipo {
+    font-weight: bold;
+    color: #0058a1;
+}
+
+
+.golpeStatus {
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+}
+
+.golpeStatus.confirmado {
+    color: #27ae60; 
+    background-color: #eaf7ed;
+}
+
+.golpeStatus.suspeito {
+    color: #f39c12; 
+    background-color: #fff9e6;
+}
+
+.golpeStatus.negado {
+    color: #95a5a6; 
+    background-color: #f2f2f2;
+}
+
+
+.golpeNome {
+    padding: 10px 15px;
+    font-size: 1.15rem;
+    color: #222;
+}
+
+
+.cardConteudo {
+    padding: 0 15px 10px 15px;
+}
+
+.cardConteudo span {
+    font-weight: bold;
+    color: #444;
+}
+
+.cardConteudo p {
+    margin-top: 5px;
+    color: #555;
+    overflow-wrap: break-word;
+}
+
+.cardFooter {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    align-items: center;
+}
+
+.cardVotos span {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.votoConfirmacao { 
+    color: #138b03; 
+}
+
+.votoNegacao { 
+    color: #b10e0e; 
+}
+
+.votoConfirmacao:hover { 
+    color: #159b03; 
+}
+
+.votoNegacao:hover { 
+    color: #db0f0f; 
+}
+
+.btnDetalhes {
+    background-color: #fe820f;
+    color: #333333;
+    padding: 8px 14px;
+    border-radius: 8px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Inika', serif;
+    font-size: 0.95rem;
+    transition: 0.2s ease;
+}
+
+.btnDetalhes:hover {
+    background-color: #d96d0e;
+    color: #000000;
+}
