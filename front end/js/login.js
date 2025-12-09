@@ -11,7 +11,10 @@ function verificarStatusLogin() {
     if(token) {
         perfilLogado.style.display = 'flex';
         perfilDeslogado.style.display = 'none';
-        btnRegistrarGolpe.style.display = 'flex'; 
+
+        if(btnRegistrarGolpe) {
+            btnRegistrarGolpe.style.display = 'flex'; 
+        }
         
         //Carregar o nome do usuário salvo no localStorage
         const usuarioData = JSON.parse(localStorage.getItem('usuarioData') || '{}');
@@ -24,7 +27,10 @@ function verificarStatusLogin() {
     else { // oculta perfil logad e mostra deslogad
         perfilLogado.style.display = 'none';
         perfilDeslogado.style.display = 'flex';
-        btnRegistrarGolpe.style.display = 'none'; 
+
+        if(btnRegistrarGolpe) {
+            btnRegistrarGolpe.style.display = 'none'; 
+        }
     }
 }
 

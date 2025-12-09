@@ -1,4 +1,8 @@
 
+function truncate(texto, limite) {
+    if (!texto) return "";
+    return texto.length > limite ? texto.substring(0, limite) + "..." : texto;
+}
 
 // Metodo PUT para atualizar contagem de votos
 async function atualizarVotos(idGolpe, tipoVoto) {
@@ -35,10 +39,6 @@ async function atualizarVotos(idGolpe, tipoVoto) {
         console.error("Erro na votação:", error.message);
     }
 }
-
-document.addEventListener('DOMContentLoaded', function() {
-    buscarGolpe(event);
-});
 
 // Função para anexar os eventos de clique aos botões de voto
 function anexarEventosVoto() {
@@ -82,15 +82,15 @@ function preencherCards(dados) {
 
                      <div class="cardConteudo">
                         <span>Descrição</span>
-                        <p>${golpe.descricao}</p>
+                        <p>${truncate(golpe.descricao, 120)}</p>
                      </div>
 
                      <div class="cardFooter">
                         <div class="cardVotos">
-                              <span class="votoConfirmacao" data-id="${golpe._id}"><i class="fas fa-thumbs-up"></i> ${golpe.votosConfirmacao}</span>
-                              <span class="votoNegacao" data-id="${golpe._id}"><i class="fas fa-thumbs-down"></i> ${golpe.votosNegacao}</span>
+                              <span class="votoConfirmacao" data-id="${golpe._id}"><i class="far fa-thumbs-up"></i> ${golpe.votosConfirmacao}</span>
+                              <span class="votoNegacao" data-id="${golpe._id}"><i class="far fa-thumbs-down"></i> ${golpe.votosNegacao}</span>
                         </div>
-                        <a href="#" class="btnDetalhes">Saiba Mais <i class="fas fa-arrow-right"></i></a>
+                        <a href="./html/detalhes.html?id=${golpe._id}" class="btnDetalhes">Saiba Mais <i class="fas fa-arrow-right"></i></a>
                      </div>
                   </div>`;
       cardSection.innerHTML += cardHTML;
@@ -126,5 +126,3 @@ async function buscarGolpe(event) {
    }
 
 }
-
-

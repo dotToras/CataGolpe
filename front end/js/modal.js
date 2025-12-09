@@ -54,12 +54,18 @@ async function cadastrarGolpe(event) {
 
     const URL = `http://localhost:3000/api/golpes/`;
     const dadosObjeto = Object.fromEntries(dataForms.entries());
+    const usuarioToken = localStorage.getItem('usuarioToken');
+
+    if(!usuarioToken) {
+        alert("É necessário estar logado para votar");
+    }
      try {
 
         const respostaGolpe = await fetch(URL, {
           method: 'POST',
           headers: {
-                'Content-Type': 'application/json' 
+                'Content-Type': 'application/json' ,
+                'Authorization': `Bearer ${usuarioToken}`,
             },
             // Envia os dados como uma string JSON
           body: JSON.stringify(dadosObjeto)
@@ -74,6 +80,7 @@ async function cadastrarGolpe(event) {
         
         console.log("Dados cadastro:", dados);
         alert("Golpe registrado com sucesso!");
+        buscarGolpe(event);
         formCadastro.reset();
         fecharModal('modalCadastro');
         

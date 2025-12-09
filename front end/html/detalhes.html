@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CataGolpe - Detalhes</title>
+    <!--Fontes--> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inika:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!--Arquivos de Estilo-->
+    <link rel="stylesheet" href="../css/style.css" />    
+    <link rel="stylesheet" href="../css/header.css" />
+    <link rel="stylesheet" href="../css/card.css" />
+    <link rel="stylesheet" href="../css/detalhes.css" />
+    <link rel="stylesheet" href="../css/modal.css" />    
+    
+</head>
+<body>
+  
+
+    <header>
+      
+        <div class="logo">
+            <img src="../img/logo.png" alt="" class="imgLogo">
+                <a href="../index.html"><p class="nomeLogo">CataGolpe</p></a>
+        </div>
+        
+
+        <div class="perfil">
+
+
+            <div class="perfilInfo">
+                <img src="https://ovicio.com.br/wp-content/uploads/2024/07/20240710-sanda-anime-teaser-2.webp" alt="" class="fotoPerfil">
+                <p class="nomeUsuario">Mario Santos</p>
+                <img width="24" height="24" src="https://img.icons8.com/external-creatype-glyph-colourcreatype/64/FE820F/external-direction-web-application-v2-creatype-glyph-colourcreatype-20.png" alt="settings--v1"/>
+            </div>
+            
+            <div class="perfilOpcoes">
+                <a href="" class="redirecionarPerfil">
+                    <p class="perfilTxt">Editar Perfil</p>
+                    <img width="24" height="24" src="https://img.icons8.com/material-rounded/24/9d9d9c/edit--v1.png" alt="edit--v1"/>
+                </a>
+                
+                <a href="" onclick='deslogar()' class="fazerLogout">
+                    <p class="perfilTxt">Encerrar sessão</p>
+                    <img width="24" height="24" src="https://img.icons8.com/android/24/9d9d9c/logout-rounded.png" alt="edit--v1"/>
+                </a>
+            </div>    
+
+        </div>
+
+        <div class="perfilDeslogado">
+            <a href="#" class="btn-acesso btn-login" onclick="mostrarModal('modalLogin')">Login</a>
+            <a href="#" class="btn-acesso btn-registrar " onclick="mostrarModal('modalCadastroUsuario')">Cadastrar</a>
+        </div>        
+    </header>
+
+    <!--Conteudo do Body-->
+    <section id="conteudoBody">
+    
+        <section id="detalheGolpeContainer">
+            
+            <div class="detalhe-header">
+                <div class="tag tipo-golpe-detalhe"></div>
+                
+                <div class="tag golpeStatus confirmado">
+                    <i class="fas fa-check-circle"></i> 
+                </div>
+            </div>
+            
+            <h1 class="titulo-detalhe"></h1>
+            
+            <div class="detalhe-metadados">
+                <p><strong><i class="fas fa-calendar-alt"></i></strong></p>
+                <p><strong><i class="fas fa-calendar-day"></i></strong> </p>
+                <p><strong><i class="fas fa-user-circle"></i> </strong> </p>
+            </div>
+            
+            <hr class="divisor-detalhe">
+
+            <div class="secao-descricao">
+                <h2>Descrição Detalhada</h2>
+                <p></p>
+            </div>
+
+            <div class="secao-referencia">
+                <h2>Link de Referência</h2>
+                <p><a href="https://example.com/denuncia-netflix-fake" target="_blank"></a></p>
+            </div>
+
+            <div class="secao-votos">
+                <h2>Confirmação da Veracidade</h2>
+                <p>Confirme se este golpe é real ou se foi negado.</p>
+                
+                <div class="votos-controles">
+                    <button class="btn-voto btn-confirmar">
+                        <i class="far fa-thumbs-up"></i>
+                        <span class="contador-votos"></span>
+                    </button>
+                    
+                    <button class="btn-voto btn-negar">
+                        <i class="far fa-thumbs-down"></i>
+                        <span class="contador-votos"></span>
+                    </button>
+                </div>
+                <small>Seu voto ajuda a validar a informação para outros usuários.</small>
+            </div>
+
+            <!--Modal de Login-->
+            <div class="modal" id="modalLogin">
+                <div class="modal-content">
+                    <span class="close-button">&times;</span>
+                    <h3>Acessar conta</h3>
+                    
+                    <form id="formLogin" class="form-modal" method="post" onsubmit="fazerLogin(event)"> 
+                        
+                        <label for="email">Email do usuário:</label>
+                        <input type="text" id="emailUsuario" name="email" placeholder="Ex: exemplo@exemplo.com" required>
+
+                        <label for="senha">Email do usuário:</label>
+                        <input type="password" id="senhaUsuario" name="senha" placeholder="Digite sua senha..." required>
+
+                        <button type="submit" class="btnEnviar">
+                            <p>Entrar</p>
+                        </button>
+
+                    </form>
+                </div>
+            </div>
+
+            <!--Modal de Cadastro-->
+            <div class="modal" id="modalCadastroUsuario">
+                <div class="modal-content">
+                    <span class="close-button">&times;</span> <h3>Crie Sua Conta</h3>
+                    
+                    <form id="formCadastroUsuario" class="form-modal" onsubmit="registrarNovoUsuario(event)"> 
+                        
+                        <label for="nome">Seu Nome:</label>
+                        <input type="text" id="reg_nome" name="nome" placeholder="Ex: Maria da Silva" required>
+
+                        <label for="email">E-mail:</label>
+                        <input type="email" id="reg_email" name="email" placeholder="seu.email@exemplo.com" required>
+
+                        <label for="reg_senha">Senha:</label>
+                        <input type="password" id="reg_senha" name="senha" placeholder="Mínimo 6 caracteres" required minlength="6">
+                        
+                        <label for="reg_confirmar_senha">Confirmar Senha:</label>
+                        <input type="password" id="reg_confirmar_senha"  placeholder="Repita a senha" required minlength="6">
+                        
+                        <button type="submit" class="btnEnviar">
+                            <p>Cadastrar</p>
+                        </button>
+                    
+                    </form>
+                </div>
+            </div>
+
+        </section>    
+    </section> 
+
+    <!--Scrips para chamada de metodos/endpoints-->
+    <script src="../js/busca.js"></script>    
+    <script src="../js/buscaDetalhes.js"></script>    
+    <script src="../js/modal.js"></script>
+    <script src="../js/login.js"></script>
+
+</body>
+</html>

@@ -53,6 +53,22 @@ export const buscarGolpes = async (req, res) => {
 
 }
 
+export const buscarGolpeEspecifico = async (req, res) => {
+
+    try{
+
+        const { id } = req.params;
+
+        const golpe = await Golpe.findById(id);
+
+        res.status(200).json({
+            data: { golpe }
+        });
+
+    }  catch(err) {
+        return res.status(400).json({ erro: err.message });
+    }
+}
 
 export const votarGolpes = async (req, res) => {
     try{
