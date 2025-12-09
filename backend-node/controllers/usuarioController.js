@@ -23,7 +23,8 @@ export const fazerLogin = async (req, res) => {
         
     return res.status(200).json({
         mensagem: 'Login bem-sucedido!',
-        token: token
+        token: token,
+        nome: usuario.nome
     });
 
 } catch(err) {
@@ -41,7 +42,7 @@ export const criarUsuario = async (req, res) => {
         res.status(201).json(usuario);
 
     } catch (err) {
-        res.staus(400).json({erro: err.message });
+        res.status(400).json({erro: err.message });
     }
 
 }

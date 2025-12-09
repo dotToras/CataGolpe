@@ -72,9 +72,9 @@ async function registrarNovoUsuario(event) {
         // Sucesso no registro: Salva o token e dados
         localStorage.setItem('usuarioToken', dados.token);
         localStorage.setItem('usuarioData', JSON.stringify({ 
-        nome: dados.nome, 
-        email: dados.email, 
-        _id: dados._id 
+            nome: dados.nome, 
+            email: dados.email, 
+            _id: dados._id 
     }));
 
         alert("Cadastro realizado com sucesso! Você está logado.");

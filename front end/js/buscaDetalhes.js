@@ -32,6 +32,7 @@ async function buscarDetalhes(id) {
 function preencherDetalhes(g) {
 
 
+    console.log(g);
     document.querySelector(".tipo-golpe-detalhe").textContent = g.tipo.toUpperCase();
 
     const status = document.querySelector(".golpeStatus");
@@ -44,7 +45,7 @@ function preencherDetalhes(g) {
     document.querySelector(".detalhe-metadados").innerHTML = `
         <p><strong><i class="fas fa-calendar-alt"></i> Data do Registro:</strong> ${formatarData(g.dataCadastro) || "-"}</p>
         <p><strong><i class="fas fa-calendar-day"></i> Ocorrência Estimada:</strong> ${formatarData(g.dataOcorrencia) || "-"}</p>
-        <p><strong><i class="fas fa-user-circle"></i> Criado por:</strong> ${g.criadoPor || "—"}</p>
+        <p><strong><i class="fas fa-user-circle"></i> Criado por:</strong> ${g.usuario.nome || "—"}</p>
     `;
 
 

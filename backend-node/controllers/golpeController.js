@@ -5,7 +5,11 @@ export const criarGolpes = async (req, res) => {
 
     try {
 
-        const golpe = await Golpe.create(req.body);
+        const golpe = await Golpe.create({
+            ...req.body,
+            usuario: req.authData.id   
+        });
+
         res.status(201).json(golpe);
 
     } catch(err) {
@@ -59,7 +63,7 @@ export const buscarGolpeEspecifico = async (req, res) => {
 
         const { id } = req.params;
 
-        const golpe = await Golpe.findById(id);
+        const golpe = await Golpe.findById(id).populate("usuario");
 
         res.status(200).json({
             data: { golpe }

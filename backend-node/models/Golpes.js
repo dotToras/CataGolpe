@@ -14,7 +14,13 @@ const golpeSchema = new mongoose.Schema({
     votosConfirmacao: { type: Number, default: 0, min: 0 },
     votosNegacao: { type: Number, default: 0, min: 0 },
     dataCadastro: { type: Date, default: Date.now, immutable: true },
-    linkReferencia: { type: String, trim: true, default: null }
+    linkReferencia: { type: String, trim: true, default: null },
+    usuario: { 
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: "Usuario",
+        required: true 
+    },
+
 }, { collection: 'Golpes', timestamps: true});
 
 const Golpes = mongoose.model("Golpe", golpeSchema, 'Golpes');
