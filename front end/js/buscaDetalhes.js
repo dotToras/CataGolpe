@@ -11,7 +11,7 @@ function formatarData(data) {
 
 async function buscarDetalhes(id) {
 
-    const URL = `http://localhost:3000/api/golpes/${id}`;
+    const URL = `https://catagolpe-api.onrender.com/api/golpes/${id}`;
 
     try {
         const resposta = await fetch(URL);

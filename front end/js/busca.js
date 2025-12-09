@@ -7,7 +7,7 @@ function truncate(texto, limite) {
 // Metodo PUT para atualizar contagem de votos
 async function atualizarVotos(idGolpe, tipoVoto) {
    
-    const URL = `http://localhost:3000/api/golpes/${idGolpe}/`; 
+    const URL = `https://catagolpe-api.onrender.com/api/golpes/${idGolpe}/`; 
     const usuarioToken = localStorage.getItem('usuarioToken');
 
     if(!usuarioToken) {
@@ -106,7 +106,7 @@ async function buscarGolpe(event) {
 
    const inputBusca = document.querySelector('.inputBusca').value;
 
-   const URL = `http://localhost:3000/api/golpes?termo=${encodeURIComponent(inputBusca)}`;
+   const URL = `https://catagolpe-api.onrender.com/api/golpes?termo=${encodeURIComponent(inputBusca)}`;
 
    try {
       const respostaGolpe = await fetch(URL);

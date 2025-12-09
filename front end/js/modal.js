@@ -52,7 +52,7 @@ async function cadastrarGolpe(event) {
     event.preventDefault();
     const dataForms = new FormData(formCadastro); // objeto com os dados enviados pelo forms
 
-    const URL = `http://localhost:3000/api/golpes/`;
+    const URL = `https://catagolpe-api.onrender.com/api/golpes/`;
     const dadosObjeto = Object.fromEntries(dataForms.entries());
     const usuarioToken = localStorage.getItem('usuarioToken');
 

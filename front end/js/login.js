@@ -55,7 +55,7 @@ async function registrarNovoUsuario(event) {
     }
 
     try {
-        const URL = 'http://localhost:3000/api/usuario/'; 
+        const URL = 'https://catagolpe-api.onrender.com/api/usuario/'; 
         const resposta = await fetch(URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -99,7 +99,7 @@ async function fazerLogin(event) {
     const usuarioData = Object.fromEntries(formData.entries());
 
     try {
-        const URL = 'http://localhost:3000/api/usuario/login'; 
+        const URL = 'https://catagolpe-api.onrender.com/api/usuario/login'; 
         const resposta = await fetch(URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
